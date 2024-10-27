@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, ChangeEvent } from "react";
+import html2canvas from "html2canvas";
+
 import { Button } from "~/components/ui/button";
 import { Textarea } from "~/components/ui/textarea";
 import { Input } from "~/components/ui/input";
@@ -13,7 +15,6 @@ import {
 } from "~/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Label } from "~/components/ui/label";
-import html2canvas from "html2canvas";
 
 const googleFonts = [
   "Inter",
@@ -57,7 +58,9 @@ export default function TwitterScreenshotGenerator() {
     };
   }, [font]);
 
-  const handleTextChange = (e) => {
+  const handleTextChange = (
+    e: ChangeEvent<HTMLTextAreaElement | undefined>
+  ) => {
     const text = e.target.value;
     const words = text.trim().split(/\s+/);
     if (words.length <= MAX_WORDS && text.length <= MAX_CHARS) {
