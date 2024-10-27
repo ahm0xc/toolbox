@@ -5,7 +5,7 @@ import { toProperCase } from "~/lib/utils";
 
 export default async function Header() {
   const tools = await getTools();
-  console.log(tools);
+  
   return (
     <header>
       <div className="max-w-7xl h-16 flex items-center justify-between bg-neutral-100 border-b mx-auto rounded-b-lg px-16">
